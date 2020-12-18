@@ -7,7 +7,7 @@
 
         public static function getAll()
         {
-            $conn = Connection::getDb();
+            $conn = Connect::getDb();
 
             $inserirDados = $conn->query("SELECT * FROM usuarios");
             return $inserirDados->fetchAll(PDO::FETCH_ASSOC);
@@ -15,7 +15,7 @@
         
         public function envioMensagem()
         {
-            $conn = Connection::getDb();
+            $conn = Connect::getDb();
     
             $inserirDados = $conn->query("INSERT INTO usuarios (nome, mensagem) VALUES ('$this->nome', '$this->mensagem')");                      
             

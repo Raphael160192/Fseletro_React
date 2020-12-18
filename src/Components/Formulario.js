@@ -11,7 +11,7 @@ import {useState, useEffect} from 'react';
   
 
       React.useEffect(async () => {
-         const url = "http://localhost/backend/Returnmensagem.php";
+         const url = "http://localhost/fseletro_react/Backend/getContent.php";
          const response = await fetch(url);
          setMensagens(await response.json());
      }, [render]);
@@ -23,7 +23,7 @@ import {useState, useEffect} from 'react';
             
             let formData = new FormData(event.target);
             
-            const url = "http://localhost/backend/Enviomensagem.php";
+            const url = "http://localhost/Backend/Enviomensagem.php";
 
             fetch(url, {
                method: "POST",

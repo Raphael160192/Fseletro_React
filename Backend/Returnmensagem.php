@@ -1,5 +1,5 @@
 <?php
-    require_once "./Backend/Api.php";
+    require_once "./connect.php";
     
 
     $result = query('SELECT * FROM usuarios');

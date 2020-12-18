@@ -12,7 +12,7 @@
 
         public static function getAll()
         {
-            $conn = Connection::getDb();
+            $conn = Connect::getDb();
 
             $inserirDados = $conn->query("SELECT * FROM pedidos");
             return $inserirDados->fetchAll(PDO::FETCH_ASSOC);
@@ -20,7 +20,7 @@
         
         public function envioPedido()
         {
-            $conn = Connection::getDb();
+            $conn = Connect::getDb();
     
             $inserirDados = $conn->query("INSERT INTO pedidos (nomeCliente, endereco,telefone,nomeProduto,valorUnitario, quantidade,valorTotal) VALUES ('$this->nomeCliente', '$this->endereco','$this->telefone','$this->nomeProduto','$this->valorUnitario','$this->quantidade','$this->valorTotal')");                      
             
