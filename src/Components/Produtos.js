@@ -112,7 +112,7 @@ export default function Produtos() {
                             <div className="celula">    
                                 <div className="pr-3 itens" key={item.idproduto} id={item.categoria}>
                                     <div>
-                                        <img id="img" onMouseOver={aumentar}  onMouseOut={diminuir} style={{width:60}} src={require(`./imagens/${item.imagem}`).default} alt={item.categoria} />
+                                        <img id="img" onMouseOver={aumentar}  onMouseOut={diminuir} style={{width:60}} src={item.imagem} alt={item.categoria} />
                                     </div> 
                                     <div className="informacoes_do_produto">
                                         {item.descricao}

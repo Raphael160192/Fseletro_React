@@ -2,7 +2,7 @@
     
 abstract class Connect
 {
-    protected static function getDb()
+    static function getDb()
     {
         $conn = new PDO("mysql:host=localhost;dbname=fseletro;charset=utf8",
         "root",
