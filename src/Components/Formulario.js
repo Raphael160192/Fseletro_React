@@ -8,10 +8,12 @@ import {useState, useEffect} from 'react';
       const [mensagens, setMensagens ] = useState([]);
       const [render, setRender] = useState(false);
       const [msg, setMsg] = useState(false);
+      const [name , setName] = useState('');
+      const [message, setMessage] = useState('');
   
 
       React.useEffect(async () => {
-         const url = "http://localhost/fseletro_react/Backend/getContent.php";
+         const url = "http://localhost:8080/comentario";
          const response = await fetch(url);
          setMensagens(await response.json());
      }, [render]);
@@ -20,14 +22,17 @@ import {useState, useEffect} from 'react';
       
       async function envioMensagem(event) {
             event.preventDefault();
-            
-            let formData = new FormData(event.target);
-            
-            const url = "http://localhost/Backend/Enviomensagem.php";
+            let formData = {
+               nome: name,
+               msg:message,
+            }
+            ;  
+            const url = "http://localhost:/8080/comentario";
 
             fetch(url, {
                method: "POST",
-               body: formData
+               headers: {"Content-Type":"application/json"},
+               body: JSON.stringify(formData)
             }).then((response) => response.json()).then((dados) => {
                setRender(!render);
                setMsg(dados);
@@ -70,9 +75,9 @@ import {useState, useEffect} from 'react';
                   <div className="input-group">
                      <form>
                         <label for="Nome">Nome</label>
-                        <input type="text" className="form-control w-400 px-2" name="nome" placeholder="digite seu nome"></input><br />
+                        <input type="text" className="form-control w-400 px-2" name="nome" placeholder="digite seu nome" value={name} onChange={event=>setName(event.target.value)}></input><br />
                         <label for="Mensagem">Mensagem</label>
-                        <input type="Mensagem" className="form-control w-400 px-2" name="mensagem" placeholder="digite seu email"></input><br />
+                        <input type="Mensagem" className="form-control w-400 px-2" name="mensagem" placeholder="digite seu email" value={message} onChange={event=>setMessage(event.target.value)}></input><br />
                         <button type="submit" class="btn btn-danger  m-1">Enviar</button>
                      </form>
                   </div>
@@ -100,7 +105,7 @@ import {useState, useEffect} from 'react';
                                       Nome: {item.nome}
                                   </div>
                                   <div>
-                                      Cliente {item.nome} escreveu: {item.mensagem}
+                                      Cliente {item.nome} escreveu: {item.msg}
                                   </div>
                                   <br/><br/>
                               </div>

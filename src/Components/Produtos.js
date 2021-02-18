@@ -27,7 +27,7 @@ export default function Produtos() {
     
     useEffect(() => {
         async function fetchData(){
-            const resposta = await fetch("http://localhost/fseletro_react/Backend/getContent.php")
+            const resposta = await fetch("http://localhost:8080/produtos")
             const dados = await resposta.json()
             setProdutos(dados);
         }
